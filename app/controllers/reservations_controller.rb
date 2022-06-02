@@ -5,7 +5,6 @@ class ReservationsController < ApplicationController
   end
 
   def show
-    @reservation = Reservation.find(params[:id])
   end
 
   def new
@@ -20,11 +19,9 @@ class ReservationsController < ApplicationController
   end
 
   def edit
-    @reservation = Reservation.find(params[:id])
   end
 
   def update
-    @reservation = Reservation.find(params[:id])
     @reservation.update(reservation_params)
 
     redirect_to reservation_path(@reservation)
