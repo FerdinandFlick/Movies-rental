@@ -3,16 +3,22 @@
 <p><%= @movie.description %></p>
 <p><%= @movie.director %></p>
 <p><%= @movie.price %></p>
+<%= cl_image_tag @movie.photo.key, height: 300, width: 400, crop: :fill %>
+
 
 <%= link_to "Delete #{@movie.title}",
             movie_path(@movie),
             method: :delete,
             data: { confirm: "Are you sure?" } %>
 
-<div class="btn btn-ghost">
-  <%= link_to "Create a new movie", new_movie_path %>
+<div class="button-19">
+  <%= link_to "Create a new movie", new_movie_path, class: "no-decoration" %>
 </div>
 
-<div class="btn btn-ghost">
-  <%= link_to "Edit this movie", edit_movie_path %>
+<div class="button-19">
+  <%= link_to "Edit this movie", edit_movie_path, class: "no-decoration" %>
+</div>
+
+<div class="button-19">
+<%= link_to "Home", root_path, class: "no-decoration" %>
 </div>
