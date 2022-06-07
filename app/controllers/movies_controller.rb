@@ -8,6 +8,13 @@ class MoviesController < ApplicationController
     else
       @movies = Movie.all
     end
+
+    @markers = @movies.geocoded.map do |movie|
+      {
+        lat: movie.latitude,
+        lng: movie.longitude
+      }
+    end
   end
 
   def show
@@ -42,7 +49,7 @@ class MoviesController < ApplicationController
   private
 
   def movie_params
-    params.require(:movie).permit(:title, :rating, :description, :director, :price, :photo)
+    params.require(:movie).permit(:title, :rating, :description, :director, :price, :photo, :genre)
   end
 
   def set_movie
