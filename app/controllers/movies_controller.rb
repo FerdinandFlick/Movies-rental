@@ -2,7 +2,12 @@ class MoviesController < ApplicationController
 
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
   def index
-    @movies = Movie.all
+    if params[:query].present?
+      sql_query = "title ILIKE :query OR description ILIKE :query"
+      @movies = Movie.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @movies = Movie.all
+    end
   end
 
   def show

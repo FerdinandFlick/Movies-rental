@@ -1,24 +1,25 @@
-<h2><%= @movie.title %></h2>
-<p><%= @movie.rating %></p>
-<p><%= @movie.description %></p>
-<p><%= @movie.director %></p>
-<p><%= @movie.price %></p>
-<%= cl_image_tag @movie.photo.key, height: 300, width: 400, crop: :fill %>
-
-
-<%= link_to "Delete #{@movie.title}",
-            movie_path(@movie),
-            method: :delete,
-            data: { confirm: "Are you sure?" } %>
-
-<div class="button-19">
-  <%= link_to "Create a new movie", new_movie_path, class: "no-decoration" %>
+<div class="card-trip">
+  <%= cl_image_tag @movie.photo.key, height: 300, crop: :fill %>
+  <div class="card-trip-infos">
+    <div>
+      <h2><%= @movie.title %></h2>
+      <p><%= @movie.genre %></p>
+      <p><%= @movie.description %></p>
+      <p>Director: <%= @movie.director %></p>
+      <p><%= @movie.rating %></p>
+    </div>
+    <h2 class="card-trip-pricing">£ <%= @movie.price %></h2>
+    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+  </div>
 </div>
 
-<div class="button-19">
-  <%= link_to "Edit this movie", edit_movie_path, class: "no-decoration" %>
-</div>
+<div class="container m-3">
+  <%= link_to "Delete #{@movie.title}",
+              movie_path(@movie),
+              method: :delete,
+              data: { confirm: "Are you sure?" }, class: "btn-flat s-blue" %>
 
-<div class="button-19">
-<%= link_to "Home", root_path, class: "no-decoration" %>
+  <%= link_to "Edit #{@movie.title}", edit_movie_path, class: "btn-flat s-blue" %>
+
+  <%= link_to "Movies", movies_path, class: "btn-flat s-blue" %>
 </div>
