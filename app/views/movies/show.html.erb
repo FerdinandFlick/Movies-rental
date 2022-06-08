@@ -3,13 +3,17 @@
   <div class="card-trip-infos">
     <div>
       <h2><%= @movie.title %></h2>
-      <p><%= @movie.genre %></p>
+      <p>Genre: <%= @movie.genre %></p>
+      <br>
       <p><%= @movie.description %></p>
+      <br>
       <p>Director: <%= @movie.director %></p>
-      <p><%= @movie.rating %></p>
-      <%# <p><%= @movie.address %></p> %>
+      <br>
+      <p>Rating: <%= @movie.rating %></p>
+      <br>
+      <p>Address: <%= @movie.address %></p>
     </div>
-    <h2 class="card-trip-pricing">£ <%= @movie.price %></h2>
+    <h2 class="card-trip-pricing">£<%= @movie.price %></h2>
     <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
   </div>
 </div>

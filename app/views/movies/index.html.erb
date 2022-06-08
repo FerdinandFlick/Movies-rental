@@ -10,10 +10,9 @@
 <br>
 <br>
 
-<h3>All movies</h3>
+<h3 class="m-2">All movies</h3>
 <br>
-<br>
-<div class="cards">
+<div class="cards m-1">
   <% @movies.each do |movie| %>
     <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path movie.photo.key, height: 300, crop: :fill %>')">
       <%= link_to movie.title, movie_path(movie.id)%>
@@ -21,7 +20,7 @@
   <% end %>
 </div>
 
-<div style="width: 100%; height: 600px;"
+<div style="width: 100%; height: 300px;"
   data-controller="mapbox"
   data-mapbox-markers-value="<%= @markers.to_json %>"
   data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
