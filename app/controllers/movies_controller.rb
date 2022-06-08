@@ -9,10 +9,12 @@ class MoviesController < ApplicationController
       @movies = Movie.all
     end
 
-    @markers = @movies.geocoded.map do |movie|
+    @markers = @movies.map do |movie|
       {
         lat: movie.latitude,
-        lng: movie.longitude
+        lng: movie.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { movie: movie }),
+        image_url: helpers.asset_url("film-solid.svg")
       }
     end
   end
