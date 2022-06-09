@@ -1,6 +1,6 @@
 <%= simple_form_for(movie) do |f| %>
   <%= f.input :title %>
-  <%= f.input :genre %>
+  <%= f.select :genre, options_for_select(%w[Genre Action Anime Comedy Fantasy Horror Love Thriller]) %>
   <%= f.input :rating %>
   <%= f.input :description %>
   <%= f.input :director %>

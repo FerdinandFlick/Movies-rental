@@ -10,17 +10,51 @@
 <br>
 <br>
 
+<h4>Filter</h4>
+<%= form_tag movies_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Filters"
+  %>
+  <%= submit_tag "Filter", class: "btn-flat s-blue" %>
+<% end %>
+<br>
+<br>
+
+<%# <div class="dropdown">
+  <button class="btn btn-flat s-blue dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Genre
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item" href="#">Anime</a>
+    <a class="dropdown-item" href="#">Comedy</a>
+    <a class="dropdown-item" href="#">Fantasy</a>
+    <a class="dropdown-item" href="#">Horror</a>
+    <a class="dropdown-item" href="#">Love</a>
+    <a class="dropdown-item" href="#">Thriller</a>
+  </div>
+</div> %>
+
+
+
+
+
+
 <h3 class="m-2">All movies</h3>
 <br>
 <div class="cards m-1">
   <% @movies.each do |movie| %>
     <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path movie.photo.key, height: 300, crop: :fill %>')">
-      <%= link_to movie.title, movie_path(movie.id)%>
+      <div class="no-decoration ">
+        <%= link_to movie.title, movie_path(movie.id) %>
+      </div>
     </div>
   <% end %>
 </div>
 
-<div style="width: 100%; height: 300px;"
+<div class="top-margin-map bottom-margin-map corners" style="width: 100%; height: 300px;"
   data-controller="mapbox"
   data-mapbox-markers-value="<%= @markers.to_json %>"
   data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>" class="mapboxgl-popup-content">
